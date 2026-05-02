@@ -8,7 +8,7 @@ function App() {
 
     <>
       <H1 title="Primary heading" desc="This is description" />
-      <p>This is component</p>
+      <h3>This is component</h3>
     </>
   );
 }
