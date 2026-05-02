@@ -1,0 +1,13 @@
+
+            JSX
+const element = <h1>Hello</h1>;
+
+          React compatiable code
+const element = React.createElement("h1", null, "Hello");
+const element = React.createElement("h1", {key:value}, "Hello");
+
+
+React compatiable code(functions & objects) === Plain JavaScript(Js engine understand & execute it )
+
+                    Flow
+JSX --> Babel(transpile it) --> React library(create the virtual DOM using these functions & objects) --> JS engine (executes the plain JS functions & manipulate the DOM via React)
