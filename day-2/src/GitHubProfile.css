@@ -1,0 +1,244 @@
+.profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top, rgba(129, 230, 217, 0.12), transparent 35%),
+    #05070e;
+  padding: 24px;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif;
+}
+
+.profile-card {
+  background: rgba(10, 15, 23, 0.92);
+  border-radius: 24px;
+  padding: 42px 30px;
+  width: min(100%, 420px);
+  text-align: center;
+  border: 1px solid rgba(161, 245, 198, 0.12);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.profile-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(161, 245, 198, 0.24);
+}
+
+.avatar {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 2px solid rgba(161, 245, 198, 0.5);
+  margin-bottom: 22px;
+  object-fit: cover;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.avatar:hover {
+  transform: scale(1.04);
+  border-color: rgba(161, 245, 198, 0.9);
+}
+
+.name {
+  font-size: 26px;
+  font-weight: 700;
+  color: #eef9f1;
+  margin: 0 0 6px;
+}
+
+.username {
+  font-size: 14px;
+  color: #7dd3a5;
+  font-weight: 500;
+  margin: 0 0 18px;
+}
+
+.bio {
+  font-size: 14px;
+  color: #c9d7d0;
+  margin: 0 auto 24px;
+  line-height: 1.6;
+  max-width: 320px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin: 24px 0;
+  padding: 18px 0;
+  border-top: 1px solid rgba(161, 245, 198, 0.12);
+  border-bottom: 1px solid rgba(161, 245, 198, 0.12);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: #adf7c7;
+}
+
+.stat-label {
+  font-size: 11px;
+  color: #94a59d;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.location {
+  font-size: 13px;
+  color: #cedcd3;
+  margin: 18px 0 24px;
+}
+
+.github-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  max-width: 260px;
+  margin: 0 auto;
+  background: rgba(125, 211, 165, 0.14);
+  color: #a8f5c7;
+  padding: 14px 0;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
+  border: 1px solid rgba(125, 211, 165, 0.35);
+}
+
+.github-btn:hover {
+  background: rgba(125, 211, 165, 0.28);
+  transform: translateY(-1px);
+}
+
+.skeleton {
+  width: 100%;
+  height: 300px;
+  background: linear-gradient(90deg, #0b1622 15%, #11232f 45%, #0b1622 85%);
+  background-size: 220% 100%;
+  border-radius: 20px;
+  animation: loading 1.4s infinite ease-in-out;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@media (max-width: 520px) {
+  .profile-card {
+    padding: 32px 22px;
+  }
+
+  .avatar {
+    width: 94px;
+    height: 94px;
+  }
+
+  .name {
+    font-size: 22px;
+  }
+
+  .stats {
+    gap: 12px;
+    padding: 16px 0;
+  }
+
+  .github-btn {
+    max-width: 100%;
+  }
+}
+
+/*and you have made a controlled form in which you take 3 fields name,email,passs and log them in a object when  you click on submit*/
+
+/*import { useEffect, useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "./assets/vite.svg";
+import heroImg from "./assets/hero.png";
+import "./App.css";
+import UserId from "./Components/UserId";
+
+function App() {
+  const [users, setUsers] = useState([]);
+  const [num, setNum] = useState(1);
+  useEffect(() => {
+    fetch(`https://api.freeapi.app/api/v1/public/randomusers/${num}`)
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result.data);
+        setUsers(result);
+        
+      })
+      .catch((err) => console.log(err));
+  }, [num]);
+  if (!users) return <div>loading...</div>;
+  console.log(users);
+  return (
+    <>
+      <div>
+        <h1>User Data by Id</h1>
+      </div>
+      <UserId 
+      name={users?.data?.name?.first} 
+      gender={users?.data?.gender} 
+      email={users?.data?.email} />
+      <button onClick={() => setNum(num + 1)}>Increase</button>
+      <button onClick={() => setNum(num - 1)}>Decrease</button>
+    </>
+  );
+}
+
+export default App; */
+
+/*function UserId({name,gender,email}){
+    <h1>{name}</h1>,
+    <h3>{gender}</h3>,
+    <p>{email}</p>
+}
+
+export default UserId*/
+
+/*
+
+import React, { useState } from "react";
+
+const App = () => {
+
+  const handleSubmit = (e)=>{
+  e.preventDefault()
+    console.log(e.target.elements.name.value)
+  }
+
+
+return (<form onSubmit={handleSubmit}>
+    <input name="name"/>
+    <button type="submit">Submit</button>
+  </form>)
+};
+
+export default App;
+
+*/
