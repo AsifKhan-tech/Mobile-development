@@ -1,70 +1,64 @@
-import { useState } from "react";
-import { View, Text, Image, TextInput, Pressable } from "react-native";
+import {
+  KeyboardAvoidingView,
+  Platform,
+  Pressable,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
 
-export default function HomeScreen() {
-  const [name, setName] = useState("");
+import { SafeAreaView } from "react-native-safe-area-context";
+
+export default function HomeScree() {
   return (
-    <View style={{ backgroundColor: "#3b3a3a" }}>
-      <Text style={{ color: "#c9c7c7" }} numberOfLines={4}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt
-      </Text>
-
-      <Image
-        /*Remote image (another server)*/
-        source={{ uri: "https://chaicode.com/assets/white-1-CYshgcRl.webp" }}
-        width={200}
-        height={200}
-
-        /*Local image*/
-      />
-
-      <Image
-        /*Local Image*/
-        source={require("@/assets/images/icon.png")}
-        style={{
-          marginTop: 20,
-          width: 100,
-          height: 100,
-        }}
-        blurRadius={10}
-      />
-
-      <TextInput
-        value={name}
-        onChangeText={setName}
-        style={{
-          backgroundColor: "#fff",
-          height: 50,
-          borderWidth: 2,
-          borderColor: "#e6c44c",
-          marginTop: 20,
-          fontSize: 20,
-        }}
-        placeholder="Enter your name"
-        placeholderTextColor={"#8e62d1"}
-      ></TextInput>
-
-      <Pressable
-        hitSlop={{
-          /*Define additional distance where trigger the component on which it is defined*/
-          top: 20,
-          bottom: 20,
-          right: 10,
-          left: 10,
-        }}
-        onPress={() => alert("pressed")}
-        style={({ pressed }) => ({
-          backgroundColor: pressed ? "#fe4848" : "#4bb1dd",
-          flex: 1,
-          justifyContent: "center",
-          alignItems: "center",
-        })}
+    <SafeAreaView style={{ flex: 1 }}>
+      <KeyboardAvoidingView
+        style={{ flex: 1 }}
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
       >
-        {/* <Text style={{ color: "#393936" }}>Press me!!!</Text> */}
-        {({ pressed }) =>
-          pressed ? <Text>pressing... </Text> : <Text>press me</Text>
-        }
-      </Pressable>
-    </View>
+        <View style={{ flex: 1, justifyContent: "flex-end", padding: 24 }}>
+          <Text style={{ fontSize: 24, fontWeight: "bold", marginBottom: 24 }}>
+            Login
+          </Text>
+          <TextInput
+            placeholder="Email"
+            style={{
+              borderWidth: 1,
+              borderColor: "#ddd",
+              borderRadius: 10,
+              padding: 14,
+              fontSize: 16,
+              marginBottom: 12,
+            }}
+          />
+
+          <TextInput
+            placeholder="Password"
+            secureTextEntry
+            style={{
+              borderWidth: 1,
+              borderColor: "#ddd",
+              borderRadius: 10,
+              padding: 14,
+              fontSize: 16,
+              marginBottom: 20,
+            }}
+          />
+
+          <Pressable
+            style={{
+              backgroundColor: "#6c63ff",
+              padding: 16,
+              borderRadius: 12,
+              alignItems: "center",
+            }}
+          >
+            <Text style={{ color: "#fff", fontWeight: "bold", fontSize: 16 }}>
+              Sign In
+            </Text>
+          </Pressable>
+        </View>
+      </KeyboardAvoidingView>
+    </SafeAreaView>
   );
 }

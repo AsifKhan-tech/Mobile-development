@@ -1,0 +1,161 @@
+import { useState } from "react";
+import { Image, Pressable, Text, TextInput, View } from "react-native";
+
+export default function HomeScreen() {
+  const [name, setName] = useState("");
+  return (
+    <View style={{ backgroundColor: "#3b3a3a" }}>
+      <Text style={{ color: "#c9c7c7" }} numberOfLines={4}>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt
+      </Text>
+
+      <Image
+        /*Remote image (another server)*/
+        source={{ uri: "https://chaicode.com/assets/white-1-CYshgcRl.webp" }}
+        width={200}
+        height={200}
+
+        /*Local image*/
+      />
+
+      <Image
+        /*Local Image*/
+        source={require("@/assets/images/icon.png")}
+        style={{
+          marginTop: 20,
+          width: 100,
+          height: 100,
+        }}
+        blurRadius={10}
+      />
+
+      <TextInput
+        value={name}
+        onChangeText={setName}
+        style={{
+          backgroundColor: "#fff",
+          height: 50,
+          borderWidth: 2,
+          borderColor: "#e6c44c",
+          marginTop: 20,
+          fontSize: 20,
+        }}
+        placeholder="Enter your name"
+        placeholderTextColor={"#8e62d1"}
+      ></TextInput>
+
+      <Pressable
+        hitSlop={{
+          /*Define additional distance where trigger the component on which it is defined*/
+          top: 20,
+          bottom: 20,
+          right: 10,
+          left: 10,
+        }}
+        onPress={() => alert("pressed")}
+        style={({ pressed }) => ({
+          backgroundColor: pressed ? "#fe4848" : "#4bb1dd",
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+        })}
+      >
+        {/* <Text style={{ color: "#393936" }}>Press me!!!</Text> */}
+        {({ pressed }) =>
+          pressed ? <Text>pressing... </Text> : <Text>press me</Text>
+        }
+      </Pressable>
+    </View>
+  );
+}
+==============================================================================
+import { useState } from "react";
+import { Button, ScrollView, Switch, Text, View } from "react-native";
+
+export default function HomeScreen() {
+  const items: string[] = Array.from(
+    { length: 5 },
+    (_, index): string => `Item ${index + 1}`,
+  );
+
+  // console.log(items);
+
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  console.log("value of isDarkMode:", isDarkMode);
+
+  return (
+    <ScrollView
+      style={{
+        backgroundColor: "rgb(61, 60, 59)",
+        flex: 1,
+      }}
+      contentContainerStyle={{
+        padding: 15,
+        alignItems: "center",
+      }}
+    >
+      {items.map((item) => (
+        <View
+          key={item}
+          style={{
+            backgroundColor: "#d2d0d0",
+            padding: 16,
+            borderRadius: 10,
+            marginBottom: 10,
+            elevation: 2,
+
+            // iOS specific
+            shadowColor: "#000",
+            shadowOpacity: 0.05,
+            shadowRadius: 4,
+          }}
+        >
+          <Text style={{ color: "#343232", fontSize: 20 }}>{item}</Text>
+        </View>
+      ))}
+
+      <Button
+        title="Click me!!!"
+        color={"#9de669"}
+        onPress={() => alert("Press me!!")}
+      />
+
+      <Switch
+        value={isDarkMode}
+        onValueChange={setIsDarkMode}
+        trackColor={{
+          false: "#c84343",
+          true: "#66e86e",
+        }}
+        thumbColor={"#f5e855"}
+      />
+    </ScrollView>
+  );
+}
+======================================================
+import { FlatList, Text, View } from "react-native";
+
+export default function HomeScreen() {
+  const USERS = [
+    { id: "1", name: "Alice Johnson", role: "Designer" },
+    { id: "2", name: "Bob Smith", role: "Developer" },
+    { id: "3", name: "Carol White", role: "Manager" },
+    { id: "4", name: "David Brown", role: "Developer" },
+    { id: "5", name: "Eve Davis", role: "Designer" },
+  ];
+
+  return (
+    <FlatList
+      style={{ backgroundColor: "#3e3c3c" }}
+      data={USERS}
+      keyExtractor={(item) => item.id}
+      contentContainerStyle={{ padding: 15 }}
+      renderItem={({ item }) => (
+        <Text style={{ fontSize: 25, color: "#ddd" }}>{item.name}</Text>
+      )}
+      ItemSeparatorComponent={() => (
+        <View style={{ height: 2, backgroundColor: "#000" }} />
+      )}
+    />
+  );
+}
