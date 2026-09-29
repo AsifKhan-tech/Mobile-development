@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 // import "./App.css";
 
 function App() {
-  // const [count, setCount] = useState(0);
+  const [count, setCount] = useState(0);
   const [darkMode, setDarkMode] = useState(false);
   function onToggleTheme() {
     setDarkMode(!darkMode);
@@ -10,7 +10,8 @@ function App() {
 
   useEffect(() => {
     console.log("Effect is running...");
-  });
+  }, [count]);
+
   return (
     <>
       {/* <main className="counter-app"> */}
@@ -31,6 +32,11 @@ function App() {
         <h1>{darkMode}</h1>
         <button className="count-button" onClick={onToggleTheme}>
           toggle
+        </button>
+
+        <h2>{count}</h2>
+        <button className="count-button" onClick={() => setCount(count + 1)}>
+          Click
         </button>
       </main>
     </>
