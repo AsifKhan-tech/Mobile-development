@@ -126,4 +126,35 @@ import "./App.css";
 //   );
 // }
 
+// function App() {
+//   const [name, setName] = useState("");
+//   return (
+//     <>
+//       <input
+//         type="text"
+//         placeholder="enter name"
+//         value={name}
+//         onChange={(e) => setName(e.target.value)}
+//       />
+//       <button>Click</button>
+
+//       <p>Hello {name}</p>
+//     </>
+//   );
+// }
+
+function App() {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(e.target.elements.name.value);
+  };
+  return (
+    <>
+      <form action="#" onSubmit={handleSubmit}>
+        <input type="text" name="name" />
+        <input type="submit" value="Submit" />
+      </form>
+    </>
+  );
+}
 export default App;
